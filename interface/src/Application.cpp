@@ -5478,13 +5478,14 @@ void Application::updateWindowTitle() const {
     QString connectionStatus = nodeList->getDomainHandler().isConnected() ? "" : " (NOT CONNECTED)";
     QString username = accountManager->getAccountInfo().getUsername();
     QString currentPlaceName = DependencyManager::get<AddressManager>()->getHost();
+    QString modification = "_Edmond";
 
     if (currentPlaceName.isEmpty()) {
         currentPlaceName = nodeList->getDomainHandler().getHostname();
     }
 
     QString title = QString() + (!username.isEmpty() ? username + " @ " : QString())
-        + currentPlaceName + connectionStatus + loginStatus + buildVersion;
+        + currentPlaceName + connectionStatus + loginStatus + buildVersion + modification;
 
 #ifndef WIN32
     // crashes with vs2013/win32
